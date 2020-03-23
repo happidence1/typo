@@ -7,7 +7,7 @@ Feature: Create categories
     Given the blog is set up
     And I am logged into the admin panel
 
-  Scenario: Successfully create categories
+  Scenario: Successfully create and edit categories
     Given I am on the new categories page
     When I fill in "category_name" with "Foobar"
     And I fill in "category_keywords" with "Lorem Ipsum"
@@ -20,3 +20,17 @@ Feature: Create categories
     Then I should see "Lorem Ipsum"
     Then I should see "GG"
     Then I should see "desc"
+    
+    Then I follow "Foobar"
+    
+    When I fill in "category_name" with "Foobar1"
+    And I fill in "category_keywords" with "Lorem Ipsum1"
+    And I fill in "category_permalink" with "GG1"
+    And I fill in "category_description" with "desc1"
+    And I press "Save"
+    #When I go to the home page
+    Then I should see "Foobar1"
+    # When I follow "Foobar"
+    Then I should see "Lorem Ipsum1"
+    Then I should see "GG1"
+    Then I should see "desc1"    
